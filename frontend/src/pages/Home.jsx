@@ -37,7 +37,7 @@ const Home = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/chat",
+        "https://chatgpt1-tklh.onrender.com/api/chat",
         { title },
         { withCredentials: true }
       );
@@ -59,7 +59,7 @@ const Home = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/chat/messages/${chatId}`,
+        `https://chatgpt1-tklh.onrender.com/api/chat/messages/${chatId}`,
         { withCredentials: true }
       );
 
@@ -98,14 +98,14 @@ const Home = () => {
   // =======================
   useEffect(() => {
     // Fetch all chats
-    axios.get("http://localhost:3000/api/chat", { withCredentials: true })
+    axios.get("https://chatgpt1-tklh.onrender.com/api/chat", { withCredentials: true })
       .then(res => {
         dispatch(setChats(res.data.chats.reverse()));
       })
       .catch(err => console.error("Error fetching chats:", err));
 
     // Initialize socket
-    const tempSocket = io("http://localhost:3000", { withCredentials: true });
+    const tempSocket = io("https://chatgpt1-tklh.onrender.com", { withCredentials: true });
 
     tempSocket.on("ai-response", (messagePayload) => {
       setMessages(prev => [...prev, { type: 'ai', content: messagePayload.content }]);
