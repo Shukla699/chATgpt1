@@ -14,10 +14,12 @@ app.use(cors({
 
 app.use(express.json())
 app.use(cookie())
+app.use(express.static(path.join(__dirname, "../public")))
+
 app.use("/api/auth", authRoute)
 app.use("/api/chat", chatRoute)
 
-app.use(express.static(path.join(__dirname, "../public")))
+
 
 app.get("*name", (req, res) => {
     res.sendFile(path.join(__dirname, "../public", "index.html"))
