@@ -18,7 +18,8 @@ app.use("/api/auth", authRoute)
 app.use("/api/chat", chatRoute)
 
 app.use(express.static(path.join(__dirname, "../public")))
-app.get("*", (req, res) => {
+
+app.get("*name", (req, res) => {
     res.sendFile(path.join(__dirname, "../public", "index.html"))
 })
 
